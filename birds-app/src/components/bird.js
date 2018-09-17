@@ -7,6 +7,10 @@ import { birdList } from '../birds.js';
 export class Bird extends Component {
     constructor(props){
         super(props)
+
+        this.sightedBird = this.sightedBird.bind(this);
+        this.getBirdSighting = this.getBirdSighting.bind(this);
+
         const { match: { params } } = this.props;
 
         const bird = birdList[params.birdId];
@@ -15,6 +19,26 @@ export class Bird extends Component {
             bird,
         }
 
+    }
+
+    sightedBird(){
+        const bird = this.state.bird;
+
+        if(
+            localStorage.getItem(bird.nederlanse_naam.toLowerCase()) === null ||
+            localStorage.getItem(bird.nederlanse_naam.toLowerCase()) === "false"
+        ){
+            localStorage.setItem(bird.nederlanse_naam.toLowerCase(), "true");
+        }else{
+            localStorage.setItem(bird.nederlanse_naam.toLowerCase(), "false");
+        }
+        this.setState({});
+    }
+
+    getBirdSighting(){
+        const bird = this.state.bird;
+
+        return localStorage.getItem(bird.nederlanse_naam.toLowerCase());
     }
 
     render() {
@@ -42,7 +66,6 @@ export class Bird extends Component {
                         <th>Etosh</th>
                         <th>Caprivi</th>
                         <th>Chobe</th>
-                        <th>Bijz.</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,11 +75,29 @@ export class Bird extends Component {
                         <th> {this.state.bird.Etosh}    </th>
                         <th> {this.state.bird.Caprivi}  </th>
                         <th> {this.state.bird.Chobe}    </th>
-                        <th> {this.state.bird.Bijz}     </th>
                     </tr>
                 </tbody>
             </Table>
             </Row>
+
+            <Row>
+                <Col><h3>Bijzonderheden:</h3></Col>
+            </Row>
+            <Row>
+                <Col>{
+                    this.state.bird.Bijz === "X" ? 
+                        <h3>n.v.t.</h3>
+                    :
+                        <h3>{this.state.bird.Bijz}</h3>
+                    }</Col>
+            </Row>
+
+            {
+                this.getBirdSighting() === "true" ?
+                    <Button color="success" size="sm" onClick={this.sightedBird}>gespot</Button>
+                : 
+                    <Button color="danger" size="sm" onClick={this.sightedBird}>niet gespot</Button>
+            }
 
             <NavLink tag={Link} to="/Birds" active> <Button color="info"> {"<--"} Terug naar alle vogeltjes </Button></NavLink>
         </Container>

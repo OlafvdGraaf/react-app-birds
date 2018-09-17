@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Header } from './components/header.js';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Home } from './components/home.js';
 import { Birds } from './components/birds.js';
 import { Bird } from './components/bird.js';
