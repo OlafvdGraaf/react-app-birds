@@ -36,24 +36,24 @@ export class Header extends Component {
 
             {/*<h1 className="App-title">De Frim87 vogels app</h1>*/}
             {<h1 className="App-title">React test-app</h1>}
-
-            <div>
-                <Navbar color="dark" dark expand="md">
-                    <Nav navbar>
-                        <NavItem>
-                            <NavLink tag={Link} to="/" active> <Button color="info"> Home </Button></NavLink>
-                        </NavItem>
-
-                        <NavItem>
-                            <NavLink tag={Link} to="/Birds" active> <Button color="info"> vogeltjes </Button></NavLink>
-                        </NavItem>
-
-                        <NavItem>
-                            <NavLink tag={Link} to="/About" active> <Button color="info"> Over </Button></NavLink>
-                        </NavItem> 
-                    </Nav>
+                <Navbar color="light" light expand="xs">
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav navbar>
+                            <NavItem>
+                                <NavLink tag={Link} to="/" active> <Button color="info"> Home </Button></NavLink>
+                            </NavItem>
+                            
+                            <NavItem>
+                                <NavLink tag={Link} to="/Birds" active> <Button color="info"> vogeltjes </Button></NavLink>
+                            </NavItem>
+                            
+                            <NavItem>
+                                <NavLink tag={Link} to="/About" active> <Button color="info"> Over </Button></NavLink>
+                            </NavItem> 
+                        </Nav>
+                    </Collapse>
                 </Navbar>
-            </div>
 
         </header>
 

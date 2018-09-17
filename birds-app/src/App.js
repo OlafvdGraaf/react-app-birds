@@ -13,7 +13,7 @@ class App extends Component {
 
         <Header />
 
-        {routes}
+        <div>{routes}</div>
 
       </div>
     );
