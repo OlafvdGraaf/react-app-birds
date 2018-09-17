@@ -61,8 +61,7 @@ export class Birds extends Component {
                 searchString.includes(bird.latijnse_naam.toLowerCase()) || 
                 searchString.includes(bird.Bijz.toLowerCase()) || 
                 searchString === "gespot" && this.getBirdSighting(bird) === "true" || 
-                searchString === "niet gespot" && this.getBirdSighting(bird) === "false" || this.getBirdSighting(bird) === null 
-                ||
+                searchString === "niet gespot" && this.getBirdSighting(bird) !== "true" ||
                 searchString.includes("sossesvlei") && bird.Soss.toLowerCase() !== "x" ||
                 searchString.includes("swakopmund") && bird.Swak.toLowerCase() !== "x" ||
                 searchString.includes("etosha") && bird.Etosh.toLowerCase() !== "x" ||
@@ -73,6 +72,8 @@ export class Birds extends Component {
         this.setState({
             filteredList : listToFilter
         });
+
+        this.setState({});
     }
 
     render() {
