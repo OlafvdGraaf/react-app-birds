@@ -83,7 +83,7 @@ export class Birds extends Component {
                 <Col>
                     <InputGroup >
                         <InputGroupAddon addonType="prepend">Filter:</InputGroupAddon>
-                        <Input placeholder="naam, gebied, soort, bijz., gespot . . ." onChange={this.handleChange}/>
+                        <Input class="form-control" type="text" placeholder="naam, gebied, soort, bijz., gespot . . ." onChange={this.handleChange}/>
                     </InputGroup>
                 </Col>
             </Row>
